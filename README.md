@@ -9,3 +9,10 @@ Pero se añade de la siguiente manera:
         <error-code>404</error-code>
         <location>HTML/error404.html</location>
     </error-page>
+    
+    
+    
+    
+    
+    
+    Tuve que crear otra rama llamada Version2 pero dejó de funcionar correctamente con NetBeans donde iba subiendo las practicas. He borrado todas las ramas y he creado esta nueva llamada Masterv2
