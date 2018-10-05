@@ -4,6 +4,7 @@
     Author     : paco
 --%>
 
+<%@page import="javax.ws.rs.core.Response"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,23 +31,55 @@
             
 
             //opción de crear cookie
-            
+            if(request.getParameter("botonCookie").equals("Crear")){
+                if(cookies==null){
+                    cookie = new Cookie(nombre,cookie.getValue());
+                    cookie.setMaxAge(60*60);//una hora de caducidad de la cookie
+                    response.addCookie(cookie);
+                    mensaje = "Se ha creado la cookie " + nombre + " con valor " + cookie.getValue();
+                }
+            } else{
+                mensaje = "La cookie ya está creada";
+            }
 
 
 
             //opcion de visualizar cookie
-            
+            if(request.getParameter("botonCookie").equals("Visualizar")){
+                if(cookies!=null){
+                   mensaje = "Esta es la cookie " + nombre + " con valor " + cookie.getValue();
+                }
+            } else{
+                mensaje = "No existe esta cookie";
+            }
 
 
 
 
             //opcion de modificar cookie
-            
+            if(request.getParameter("botonCookie").equals("Modificar")){
+                if(cookies!=null){
+                    cookie = new Cookie(cookie.getName(),cookie.getValue());
+                    cookie.setValue(cookie.getValue());
+                    response.addCookie(cookie);
+                    mensaje = "Se ha modificado la cookie " + nombre + " con valor " + cookie.getValue();
+                }
+            } else{
+                mensaje = "No existe esta cookie";
+            }
 
 
 
 
             //opcion de eliminar cookie
+            if(request.getParameter("botonCookie").equals("Eliminar")){
+                if(cookies!=null){
+                    
+                }
+            }
+            
+
+            response.sendRedirect("menuCookie.jsp?mensaje" + mensaje);
         %>
     </body>
 </html>

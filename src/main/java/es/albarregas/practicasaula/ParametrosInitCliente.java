@@ -19,11 +19,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author paco
  */
-@WebServlet(name = "Cliente", urlPatterns = {"/Cliente"}, initParams = {
-    @WebInitParam(name = "Param1", value = "Hola"), @WebInitParam(name = "Param2", value = "Mundo")})
-public class Cliente extends HttpServlet {
-    
-   
+@WebServlet(name = "ParametrosInitCliente", urlPatterns = {"/ParametrosInitCliente"}, initParams = {
+    @WebInitParam(name = "Param1", value = "Hola"),
+    @WebInitParam(name = "Param2", value = "Value")})
+public class ParametrosInitCliente extends HttpServlet {
+
+    public ParametrosInitCliente() {
+        super();
+    }
+
+    public void init(ServletConfig config, HttpServletResponse response) throws ServletException, IOException {
+        super.init();
+        PrintWriter out = response.getWriter();
+        out.println("<p>Parametro 1: " + config.getInitParameter("Param1") + "</p>");
+        out.println("<p>Parametro 2: " + config.getInitParameter("Param2") + "</p>");
+        System.out.println("Parametro 1: " + config.getInitParameter("Param1"));
+        System.out.println("Parametro 2: " + config.getInitParameter("Param2"));
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,39 +50,20 @@ public class Cliente extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
         try {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Cliente</title>"); 
-            out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"CSS/estilos.css\">");
+            out.println("<title>Servlet ParametrosInitCliente</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Cliente at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Metodo: " + request.getMethod() + "</h1>");
-            out.println("<h1>Informacion del Path: " + request.getPathInfo() + "</h1>");
-            out.println("<h1>Usuario remoto: " + request.getRemoteUser() + "</h1>");
-            out.println("<h1>Nombre del servidor: " + request.getServerName() + "</h1>");
-            out.println("<h1>Protocolo: " + request.getProtocol() + "</h1>");
-            out.println("<h1>Dirección remota: " + request.getRemoteAddr() + "</h1>");
+            out.println("<h1>Servlet ParametrosInitCliente at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {
             out.close();
         }
-    }
-    
-    public Cliente() {
-        super();
-    }
-
-    public void init(ServletConfig config, HttpServletResponse response) throws ServletException, IOException {
-        super.init();
-        PrintWriter out = response.getWriter();
-        out.println("<p>Parametro 1: " + config.getInitParameter("Param1") + "</p>");
-        out.println("<p>Parametro 2: " + config.getInitParameter("Param2") + "</p>");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -27,10 +27,14 @@
                 <button type="submit" name="botonCookie" value="Visualizar">Visualizar</button>
                 <button type="submit" name="botonCookie" value="Modificar">Modificar</button>
                 <button type="submit" name="botonCookie" value="Eliminar">Eliminar</button>
-            </fieldset>
-                  <%
+                <br>
+                <br>
+                 <%
                     String mensaje = (request.getParameter("mensaje") != null)?request.getParameter("mensaje"):"";
                   %>
+                  
+            </fieldset>
+                 
         </form>
              <a href="<%=request.getContextPath()%>/index.html">Menú</a> 
         </div>
