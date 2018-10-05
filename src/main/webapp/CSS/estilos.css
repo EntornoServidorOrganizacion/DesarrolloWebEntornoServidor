@@ -1,0 +1,138 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20 sept. 2018, 11:41:37
+    Author     : paco
+*/
+*{
+    box-sizing: border-box; 
+}
+
+body{
+    background-image: url(../IMAGE/earth.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: black;
+    padding: 10%;
+    padding-top: 1%;
+    color: white;
+    font-family: sans-serif;
+    text-align:center;
+    margin:0 auto;
+    font-size: 40px;
+}
+
+a { 
+    color: #ffffff; 
+}
+
+h1{
+    font-size: 100px;
+}
+
+h2{
+    font-size: 40px;
+}
+
+
+li{
+    list-style-type: none;
+    font-size: 20px;
+    text-align: left;
+}
+
+#izq{
+    /*display: inline-block;*/
+    float: left;
+    text-align: left;
+    border: 4px white solid;
+    padding: 1%;
+    margin: 1%;
+}
+
+#cen{
+    /*display: inline-block;*/
+    float: left;
+    text-align: left;
+    margin-left: 8%;
+    margin-right: 8%;
+    border: 4px white solid;
+    padding: 1%;
+    margin: 1%;
+}
+
+#der{
+    /*display: inline-block;*/
+    float: left;
+    text-align: left;
+    border: 4px white solid;
+    padding: 1%;
+    margin: 1%;
+}
+
+form{
+    /*background-color: white;*/
+    opacity: 0.9;
+    color: black;
+    font-size: 20px;
+}
+fieldset{
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+label, input, button{
+    margin: 1%;
+    display: inline-block;
+}
+
+label{
+    width: 250px;
+}
+
+
+legend {
+    width: 400px;
+    overflow: hidden;
+    border: 6px groove #ccc;
+    background: white;
+    font-weight:bold;
+}
+
+fieldset {
+    border:6px groove #ccc; /* Borde */
+    background: white; /* Color de fondo */
+    color:black; /* Color del texto de todo el contenido */
+    opacity: 0.9;
+}
+
+button{
+    background-color: white;
+    border:2px groove #000;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 45px;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: black;
+    border:2px groove #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 45px;
+    color: white;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Formulario Complejo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../CSS/normalizer.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/estilos.css">
+    </head>
+    <body>
+        <div>
+            <form action="../FormularioComplejo" method="post">
+                <!-- DATOS PERSONALES -->
+                <fieldset id="datosPersonales">
+                    <legend>Datos personales</legend>
+
+                    <label>Usuario: </label><input name="usuario" type="text"><br>
+                    <label>Password: </label><input name="password" type="password"><br>
+
+                    <label>Edad: </label>
+                    <select id="edad" name="edad">
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21" selected>21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                    </select>
+                    <br/>
+
+                </fieldset>
+
+                <!-- OTROS DATOS -->
+
+                <fieldset id="otrosDatos">
+
+                    <legend>Otros datos</legend>
+
+                    <label class="radio-inline">Estado civil: <input type="radio" name="estadoCivil" value="soltero" checked = "checked"> Soltero/a</label>
+                    <label class="radio-inline"><input type="radio" name="estadoCivil" value="casado"> Casado/a</label>
+                    <label class="radio-inline"><input type="radio" name="estadoCivil" value="viudo"> Viudo/a</label>
+                    <label class="radio-inline"><input type="radio" name="estadoCivil" value="divorciado"> Divorciado/a</label><br>
+
+                    <label>Aficiones (uno o varios, CTRL o Command): <br/>
+                        <select name="aficiones" size="6" multiple="multiple">
+                            <option value="deporte">Deporte</option>
+                            <option value="musica">Música</option>
+                            <option value="informatica">Informática</option>
+                            <option value="viajes">Viajes</option>
+                            <option value="tiendas">Tiendas</option>
+                            <option value="juegos">Juegos</option>
+                        </select>
+                    </label><br/>
+
+                    <label>Comentarios:<br/><textarea name="areaTexto" rows="4" cols="50">Pon tu comentario...</textarea><br/></label>
+                </fieldset>
+
+                <!-- MEDIOS TECNOLOGICOS -->
+                <fieldset id="mediosTecnologicos">
+                    <legend>Medios Tecnológicos</legend>
+
+                    <label class="radio-inline">Dispones de internet?: <input type="radio" name="disponeSi" value="si" checked = "checked"> Sí</label>
+                    <label class="radio-inline"><input type="radio" name="disponeNo" value="no"> No</label><br>
+
+                    <label>Sistema operativo (elige uno): <br/>
+                        <select name="SO" size="4">
+                            <option value="linux">Linux</option>
+                            <option value="windows">Windows</option>
+                            <option value="mac">MacOS</option>
+                            <option value="solaris">Solaris</option>
+                        </select>
+                    </label><br/>
+                </fieldset>
+
+                <button type="submit" name="enviar" value="Enviar">Enviar</button>
+                <button type="reset" name="limpiar" value="Limpiar">Limpiar</button>
+
+            </form>
+        </div>
+    </body>
+</html>
