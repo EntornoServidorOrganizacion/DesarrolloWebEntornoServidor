@@ -18,25 +18,34 @@
             <h1>CONTROL DE COOKIES</h1>
             <form action="../JSP/cookies.jsp" method="post">
 
-            <fieldset>
-                <label>Nombre de la cookie:</label><input  name="nombre" type="text"><br>
-                <label>Valor de la cookie:</label><input  name="valor" type="text"><br>
-                <br>
-                <br>
-                <button type="submit" name="botonCookie" value="Crear">Crear</button>
-                <button type="submit" name="botonCookie" value="Visualizar">Visualizar</button>
-                <button type="submit" name="botonCookie" value="Modificar">Modificar</button>
-                <button type="submit" name="botonCookie" value="Eliminar">Eliminar</button>
-                <br>
-                <br>
-                 <%
-                    String mensaje = (request.getParameter("mensaje") != null)?request.getParameter("mensaje"):"";
-                  %>
-                  
-            </fieldset>
-                 
-        </form>
-             <a href="<%=request.getContextPath()%>/index.html">Menú</a> 
+                <fieldset>
+                    <label>Nombre de la cookie:</label><input  name="nombre" type="text" required><br>
+                    <label>Valor de la cookie:</label><input  name="valor" type="text"><br>
+                    <br>
+                    <br>
+                    <button type="submit" name="botonCookie" value="Crear">Crear</button>
+                    <button type="submit" name="botonCookie" value="Visualizar">Visualizar</button>
+                    <button type="submit" name="botonCookie" value="Modificar">Modificar</button>
+                    <button type="submit" name="botonCookie" value="Eliminar">Eliminar</button>
+                    <button type="submit" name="botonCookie" value="Menu"><a id="menuCookies" href="<%=request.getContextPath()%>/index.html">Menú</a> </button>
+                    <br>
+                    <br>
+                    <%
+                        //String mensaje = (request.getParameter("mensaje") != null)?request.getParameter("mensaje"):"";
+                        String mensaje;
+                        if (request.getParameter("mensaje") != null) {
+                            mensaje = request.getParameter("mensaje");
+                        } else {
+                            mensaje = "";
+                        }
+
+                    %>
+                    <p><em>AQUI DEBE IR EL MENSAJE</em><%=mensaje%></p>
+
+                </fieldset>
+
+            </form>
+
         </div>
     </body>
 </html>

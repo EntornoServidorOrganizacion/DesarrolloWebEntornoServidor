@@ -29,6 +29,15 @@ body{
 
 a { 
     color: #ffffff; 
+    text-decoration: none;
+}
+
+
+#menuCookies{
+    color: #000;
+}
+#menuCookies:hover{
+    color: #fff;
 }
 
 h1{
@@ -37,6 +46,7 @@ h1{
 
 h2{
     font-size: 40px;
+    text-decoration: underline white;
 }
 
 
@@ -52,7 +62,7 @@ li{
     text-align: left;
     border: 4px white solid;
     padding: 1%;
-    margin: 1%;
+    margin: 2%;
 }
 
 #cen{
@@ -63,7 +73,7 @@ li{
     margin-right: 8%;
     border: 4px white solid;
     padding: 1%;
-    margin: 1%;
+    margin: 2%;
 }
 
 #der{
@@ -72,7 +82,7 @@ li{
     text-align: left;
     border: 4px white solid;
     padding: 1%;
-    margin: 1%;
+    margin: 2%;
 }
 
 form{

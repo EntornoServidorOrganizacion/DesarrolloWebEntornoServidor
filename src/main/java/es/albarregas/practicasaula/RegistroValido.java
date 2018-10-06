@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author paco
  */
-public class Registro extends HttpServlet {
+@WebServlet(name = "RegistroValido", urlPatterns = {"/RegistroValido"})
+public class RegistroValido extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,9 +34,6 @@ public class Registro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
-       
-
         try {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -57,47 +56,9 @@ public class Registro extends HttpServlet {
             String anio = parametros.get("anio")[0];
             String fecha = "La fecha es: " + dia + "/" + mes + "/" + anio;
             
-            /*for (Map.Entry<String, String[]> entrada : parametros.entrySet()) {
-                if (!entrada.getValue()[0].equals("")) {
-                    tError[0] = 0;
-                } else {
-                    out.println("<p>AQUI DEBE PINTARSE DE NUEVO EL FORMULARIO</p>");
-                }
-                if (!entrada.getKey().startsWith("env")) {
-                    out.println("<p>" + entrada.getKey() + ":");
-
-                    for (String valor : entrada.getValue()) {
-
-                        out.println("<strong>");
-                        out.println(valor);
-                        out.println("</strong>");
-
-                    }
-                    out.println("</p>");
-                }
-            }*/
-
-            /**
-             * int campoFecha = 0; crear un StringBuilder para meter la fecha
-             * fecha = new StringBuilder("Fecha de nacimiento:<strong>")
-             *
-             * recorrer el mapa
-             *
-             * if(entrada.getKey().equals("dia")||
-             * entrada.getKey().equals("mes") || anio) camposFecha++
-             * if(entrada.equals("mes") pasar por un for los String porque si no
-             * muestra la direccion de memoria en vez de lo que queremos ver
-             * for(String valor:entrada.getValue(){
-             * fecha.append(meses[Integer.parseInt(valor)-1]); else { for(String
-             * valor:entrada.getValue(){ fecha.append(valor);
-             *
-             *
-             * if(camposFecha < 1 || camposFechas > 3{ Stringbuilder sb = for{
-             * sb.appen(valor).append(", ");
-             *
-             * out.println( else
-             */
-            if (tError[0] == -1) {
+            
+            
+             if (tError[0] == -1) {
                 out.println("<form action=\"" + request.getContextPath() + "/Registro\" method=\"post\">");
 
                 //INFORMACIÓN PERSONAL
@@ -124,7 +85,13 @@ public class Registro extends HttpServlet {
                 out.println("<button type=\"reset\" name=\"limpiar\" value=\"Limpiar\">Limpiar</button>");
                 out.println("</form>");
             }
-
+            
+            
+            
+            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet RegistroValido at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {
@@ -159,7 +126,6 @@ public class Registro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     /**

@@ -4,7 +4,6 @@
     Author     : paco
 --%>
 
-<%@page import="javax.ws.rs.core.Response"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,70 +15,72 @@
         <%
             String mensaje = null;
             String nombre = request.getParameter("nombre");
+            String valor = request.getParameter("valor");
             Cookie cookie = null;
             Cookie[] cookies = request.getCookies();
-            
+
             //comprobar el array de cookies para ver si está vacio
-            if(cookies != null){
+            if (cookies != null) {
                 for (int i = 0; i < cookies.length; i++) {
-                        if(cookies[i].getName().equals(nombre)){
-                           cookie = cookies[i];
-                           break; 
-                        }
+                    if (cookies[i].getName().equals(nombre)) {
+                        cookie = cookies[i];
+                        break;
                     }
+                }//fin del for
             }//fin comprobación para saber si hay cookies
-            
 
             //opción de crear cookie
-            if(request.getParameter("botonCookie").equals("Crear")){
-                if(cookies==null){
-                    cookie = new Cookie(nombre,cookie.getValue());
-                    cookie.setMaxAge(60*60);//una hora de caducidad de la cookie
+            if (request.getParameter("botonCookie").equals("Crear")) {
+                if (cookies == null) {
+                    cookie = new Cookie(nombre, valor);
+                    cookie.setMaxAge(60 * 60);//una hora de caducidad de la cookie
                     response.addCookie(cookie);
-                    mensaje = "Se ha creado la cookie " + nombre + " con valor " + cookie.getValue();
+                    mensaje = "Se ha creado la cookie " + nombre + " con valor " + valor;
+
                 }
-            } else{
+            } else {
                 mensaje = "La cookie ya está creada";
-            }
-
-
+            }//fin if crear
 
             //opcion de visualizar cookie
-            if(request.getParameter("botonCookie").equals("Visualizar")){
-                if(cookies!=null){
-                   mensaje = "Esta es la cookie " + nombre + " con valor " + cookie.getValue();
+            if (request.getParameter("botonCookie").equals("Visualizar")) {
+                if (cookies != null) {
+                    for (int i = 0; i < cookies.length; i++) {
+                        if (cookies[i].getName().equals("nombre")) {
+                            mensaje = "Esta es la cookie " + cookies[i].getName() + " con valor " + cookies[i].getValue();
+                        }
+                    }//fin del for
                 }
-            } else{
-                mensaje = "No existe esta cookie";
-            }
-
-
-
+            } else {
+                mensaje = "No existe esta cookie (VISUALIZAR)";
+            }//fin if visualizar
 
             //opcion de modificar cookie
-            if(request.getParameter("botonCookie").equals("Modificar")){
-                if(cookies!=null){
-                    cookie = new Cookie(cookie.getName(),cookie.getValue());
-                    cookie.setValue(cookie.getValue());
+            if (request.getParameter("botonCookie").equals("Modificar")) {
+                if (cookies != null) {
+                    //cookie = new Cookie(nombre, valor);
+                    cookie.setValue(valor);
                     response.addCookie(cookie);
-                    mensaje = "Se ha modificado la cookie " + nombre + " con valor " + cookie.getValue();
+                    mensaje = "Se ha modificado la cookie " + nombre + " con valor " + valor;
                 }
-            } else{
-                mensaje = "No existe esta cookie";
-            }
+            } else {
+                mensaje = "No existe esta cookie (MODIFICAR)";
 
-
-
+            }//fin if modificar
 
             //opcion de eliminar cookie
-            if(request.getParameter("botonCookie").equals("Eliminar")){
-                if(cookies!=null){
-                    
+            if (request.getParameter("botonCookie").equals("Eliminar")) {
+                if (cookies != null) {
+                    for (int i = 0; i < cookies.length; i++){
+                        cookie.setValue("");
+                        cookie.setMaxAge(0);
+                        response.addCookie(cookie);
+                    }
                 }
-            }
-            
+            }//fin if eliminar
 
             response.sendRedirect("menuCookie.jsp?mensaje" + mensaje);
+
         %>
     </body>
 </html>
