@@ -51,7 +51,7 @@
                 <%
                     
                     String mensajeOperacion = "";
-                    
+                    /*
                     if (request.getParameter("operacion").equals("Sumar")) {
                         mensajeOperacion = "El resultado de " + 
                         Integer.parseInt(request.getParameter("num1"))+ " + " + 
@@ -77,7 +77,7 @@
                             mensajeOperacion = "No se puede dividir entre 0";
                         }
                     }
-                    
+                    */
                 %>
                 <%=mensajeOperacion%>
                 <button type="reset" name="limpiar" value="Limpiar">Limpiar</button>
