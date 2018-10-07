@@ -29,57 +29,68 @@
                 }//fin del for
             }//fin comprobación para saber si hay cookies
 
-            //opción de crear cookie
-            if (request.getParameter("botonCookie").equals("Crear")) {
-                if (cookies == null) {
+            //CREAR
+            if (request.getParameter("botonCookie").equals("Crear")) { //Comprobamos si el botón es el de Crear
+
+                if (cookie == null) { //Comprobar que la cookie está vacia, si está vacia, se crea la cookie
                     cookie = new Cookie(nombre, valor);
                     cookie.setMaxAge(60 * 60);//una hora de caducidad de la cookie
                     response.addCookie(cookie);
-                    mensaje = "Se ha creado la cookie " + nombre + " con valor " + valor;
-
+                    mensaje = "Se ha creado la cookie \"" + nombre + "\" con valor \"" + valor + "\"";
+                } else {
+                    mensaje = "La cookie \"" + nombre + "\" ya existe";
                 }
-            } else {
-                mensaje = "La cookie ya está creada";
-            }//fin if crear
 
-            //opcion de visualizar cookie
-            if (request.getParameter("botonCookie").equals("Visualizar")) {
-                if (cookies != null) {
-                    for (int i = 0; i < cookies.length; i++) {
-                        if (cookies[i].getName().equals("nombre")) {
-                            mensaje = "Esta es la cookie " + cookies[i].getName() + " con valor " + cookies[i].getValue();
-                        }
-                    }//fin del for
-                }
-            } else {
-                mensaje = "No existe esta cookie (VISUALIZAR)";
-            }//fin if visualizar
-
-            //opcion de modificar cookie
-            if (request.getParameter("botonCookie").equals("Modificar")) {
-                if (cookies != null) {
-                    //cookie = new Cookie(nombre, valor);
-                    cookie.setValue(valor);
-                    response.addCookie(cookie);
-                    mensaje = "Se ha modificado la cookie " + nombre + " con valor " + valor;
-                }
-            } else {
-                mensaje = "No existe esta cookie (MODIFICAR)";
-
-            }//fin if modificar
-
-            //opcion de eliminar cookie
-            if (request.getParameter("botonCookie").equals("Eliminar")) {
-                if (cookies != null) {
-                    for (int i = 0; i < cookies.length; i++){
-                        cookie.setValue("");
-                        cookie.setMaxAge(0);
-                        response.addCookie(cookie);
+            
+            
+            //VISUALIZAR  
+            } else if (request.getParameter("botonCookie").equals("Visualizar")) {//Comprobamos si el botón es el de Visualizar
+                for (int i = 0; i < cookies.length; i++) {//recorrer el array de cookies para buscar la cookie
+                    if (cookies[i].getName().equals(nombre)) {//si la cookie del array tiene el mismo nombre que buscamos, nos la muestra
+                        mensaje = "Esta es la cookie \"" + nombre + "\" con valor \"" + cookie.getValue() + "\"";
+                        break;
+                    } else {
+                        mensaje = "La cookie \"" + nombre + "\" no existe";
                     }
                 }
-            }//fin if eliminar
 
-            response.sendRedirect("menuCookie.jsp?mensaje" + mensaje);
+            
+
+
+            //MODIFICAR
+            } else if (request.getParameter("botonCookie").equals("Modificar")) {//Comprobamos si el botón es el de Modificar
+                for (int i = 0; i < cookies.length; i++){
+                    if (cookies[i].getName().equals(nombre)) {
+                        cookie.setValue(valor);
+                        response.addCookie(cookie);
+                        mensaje = "Se ha modificado la cookie \"" + nombre + " con valor \"" + valor + "\"";
+                        break;
+                    } else{
+                        mensaje = "La cookie \"" + nombre + "\" no existe";
+                    }
+                }
+                
+            
+
+
+
+
+            //ELIMINAR    
+            } else if (request.getParameter("botonCookie").equals("Eliminar")) {//Comprobamos si el botón es el de Eliminar
+                for (int i = 0; i < cookies.length; i++){
+                    if (cookies[i].getName().equals(nombre)) {
+                        cookie.setMaxAge(0);
+                        response.addCookie(cookie);
+                        mensaje = "Se ha eliminado la cookie \"" + nombre;
+                        break;
+                    }else{
+                        mensaje = "La cookie \"" + nombre + "\" no existe";
+                    }
+                }
+            }
+
+            //enviar la respuesta al menú inicial donde están las opciones
+            response.sendRedirect("menuCookie.jsp?mensaje=" + mensaje);
 
         %>
     </body>

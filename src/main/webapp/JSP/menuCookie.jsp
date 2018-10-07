@@ -40,7 +40,7 @@
                         }
 
                     %>
-                    <p><em>AQUI DEBE IR EL MENSAJE</em><%=mensaje%></p>
+                    <p><%=mensaje%></p>
 
                 </fieldset>
 
