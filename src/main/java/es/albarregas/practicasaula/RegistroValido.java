@@ -47,18 +47,47 @@ public class RegistroValido extends HttpServlet {
             out.println("<a href='./index.html'>Menú</a>");
 
             //arrays de error
-            int[] tError = {-1};//array de 4 posiciones mejor que poner -1 cuatro veces
-            String[] mError = {request.getParameter("Nombre")};
+            int[] tError = {-1};
+            String[] mError = {"Error en el nombre"};
 
-            Map<String, String[]> parametros = request.getParameterMap();//request.getParameterMap()
+            Map<String, String[]> parametros = request.getParameterMap();
+
             String dia = parametros.get("dia")[0];
             String mes = parametros.get("mes")[0];
             String anio = parametros.get("anio")[0];
             String fecha = "La fecha es: " + dia + "/" + mes + "/" + anio;
-            
-            
-            
-             if (tError[0] == -1) {
+
+            if (request.getParameter("Nombre").equals("")) {
+                tError[0] = 0;
+            }
+
+            if (tError[0] == 0) {
+                out.println("<form action=\"/RegistroValido\" method=\"post\">");
+                out.println("<fieldset>");
+                out.println("<legend>Información personal</legend>");
+                out.println("<label>*Nombre</label><input type=\"text\" name=\"Nombre\" value=\"" + mError[0] + "\">");
+                out.println("<label>Apellidos</label><input type=\"text\" name=\"Apellidos\" value=\"" + request.getParameter("Apellidos") + "\">");
+                out.println("</fieldset>");
+                //botones
+                out.println("<button type=\"submit\" name=\"enviar\" value=\"Enviar\">Enviar</button>");
+                out.println("<button type=\"reset\" name=\"limpiar\" value=\"Limpiar\">Limpiar</button>");
+                out.println("</form>");
+            } else if(tError[0] == -1){
+                for (Map.Entry<String, String[]> entrada : parametros.entrySet()) {
+                    if (!entrada.getKey().startsWith("env")) {
+                        out.println("<p>" + entrada.getKey() + ":");
+
+                        for (String valor : entrada.getValue()) {
+                            out.println("<strong>");
+                            out.println(valor);
+                            out.println("</strong>");
+                        }
+                        out.println("</p>");
+                    }
+                }
+            }
+
+            /*if (tError[0] == -1) {
                 out.println("<form action=\"" + request.getContextPath() + "/Registro\" method=\"post\">");
 
                 //INFORMACIÓN PERSONAL
@@ -68,7 +97,7 @@ public class RegistroValido extends HttpServlet {
                 if (true) {
                     out.println("<label>*Nombre</label><input type=\"text\" name=\"Nombre\" value=\"" + parametros.get("Nombre") + "\">");
                 } else {
-                    out.println("<label>*Nombre</label><input type=\"text\" name=\"Nombre\" value=\"Error\">");
+                    out.println("<label>*Nombre</label><input type=\"text\" name=\"Nombre\" value=\"Error\"><label>"+mError[0]+"</label>");
                 }
                 //Apellidos
                 if (true) {
@@ -84,14 +113,10 @@ public class RegistroValido extends HttpServlet {
                 out.println("<button type=\"submit\" name=\"enviar\" value=\"Enviar\">Enviar</button>");
                 out.println("<button type=\"reset\" name=\"limpiar\" value=\"Limpiar\">Limpiar</button>");
                 out.println("</form>");
-            }
+             }*/
             
             
-            
-            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RegistroValido at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Servlet RegistroValido at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {

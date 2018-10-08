@@ -12,28 +12,66 @@
         <link rel="stylesheet" type="text/css" href="../CSS/normalizer.css">
         <link rel="stylesheet" type="text/css" href="../CSS/estilos.css">
         <title>CONTADOR DE VISITAS COOKIES</title>
+        <script>
+            function myFunction() {
+                location.reload();
+            }
+        </script>
+
     </head>
     <body>
+        <%
+            
+            int contadorVisitas = 0;
+            Cookie miCookie = null;
+            Cookie[] cookies = request.getCookies();
+
+            //cookie.getMaxAge();
+            //comprobar el array de cookies para ver si está vacio
+            if (cookies != null) {
+                for (int i = 0; i < cookies.length; i++) {
+                    if (cookies[i].getName().equals("LaCookieCreada")) {
+                        miCookie = cookies[i];
+                        break;
+                    }
+                }//fin del for
+            }//fin comprobación para saber si hay cookies
+
+            if (miCookie == null) {
+                miCookie = new Cookie("LaCookieCreada", "1");
+                miCookie.setMaxAge(60 * 60);//una hora de caducidad de la cookie
+                response.addCookie(miCookie);
+            }
+            
+
+            String mensajeVisitas = "HAS VISITADO LA PAGINA " + miCookie.getValue() + " VECES";
+
+            /**
+             * crear un if para ver si está definida la cookie. Si no existe la
+             * cookie, sería la primera visita, dar al valor de 1, crear la
+             * cookie (dar el valor) Si la cookie existe debe mostrar el número
+             * de visitas, incrementar en 1 el contador,
+             *
+             */
+
+        %>
         <h1>CONTADOR DE VISITAS COOKIES</h1>
-            <form action="../JSP/contadorVisitasCookies.jsp" method="post">
+        <form action="../JSP/contadorVisitasCookies.jsp" method="post">
 
             <fieldset>
-                <label>Nombre de la cookie:</label><br>
-                <label>Valor de la cookie:</label><br>
+                <%=mensajeVisitas%>
                 <br>
                 <br>
-                <button type="submit" name="botonCookie" value="Recargar">Recargar</button>
-                <button type="submit" name="botonCookie" value="Eliminar">Eliminar</button>
-                <button type="submit" name="botonCookie" value="Menu"><a id="menuCookies" href="<%=request.getContextPath()%>/index.html">Menú</a> </button>
-                
+
+                <button type="submit" name="boton" value="Recargar"><a id="menuCookies" onclick="myFunction()">Recargar</a> </button>
+                <button type="submit" name="boton" value="Eliminar">Eliminar</button>
+                <button type="submit" name="boton" value="Menu"><a id="menuCookies" href="<%=request.getContextPath()%>/index.html">Menú</a> </button>
                 <br>
                 <br>
-                 <%
-                    String mensaje = (request.getParameter("mensaje") != null)?request.getParameter("mensaje"):"";
-                  %>
-                  
             </fieldset>
-                 
+
         </form>
     </body>
+
 </html>
+

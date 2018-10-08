@@ -33,6 +33,8 @@
                 // Obtiener nombre del mes
                 String nombreMes = mes.getDisplayName(TextStyle.FULL, new Locale("es", "ES"));
                 String nombreDiaSemana = diaSemana.getDisplayName(TextStyle.FULL, new Locale("es", "ES"));
+
+
             %>
             <fieldset>
                 <legend>CALCULADORA BASICA</legend>
@@ -49,38 +51,41 @@
                 <br>
                 <br>
                 <%
-                    
+
                     String mensajeOperacion = "";
-                    /*
-                    if (request.getParameter("operacion").equals("Sumar")) {
-                        mensajeOperacion = "El resultado de " + 
-                        Integer.parseInt(request.getParameter("num1"))+ " + " + 
-                        Integer.parseInt(request.getParameter("num2")) + " = " + 
-                        (Integer.parseInt(request.getParameter("num1"))+Integer.parseInt(request.getParameter("num2")));
-                    }else if(request.getParameter("operacion").equals("Restar")){
-                        mensajeOperacion = "El resultado de " + 
-                        Integer.parseInt(request.getParameter("num1"))+ " - " + 
-                        Integer.parseInt(request.getParameter("num2")) + " = " + 
-                        (Integer.parseInt(request.getParameter("num1"))-Integer.parseInt(request.getParameter("num2")));
-                    }else if(request.getParameter("operacion").equals("Multiplicar")){
-                        mensajeOperacion = "El resultado de " + 
-                        Integer.parseInt(request.getParameter("num1"))+ " * " + 
-                        Integer.parseInt(request.getParameter("num2")) + " = " + 
-                        (Integer.parseInt(request.getParameter("num1"))*Integer.parseInt(request.getParameter("num2")));
-                    }else if(request.getParameter("operacion").equals("Dividir")){
-                        if(Integer.parseInt(request.getParameter("num2"))!=0){
-                            mensajeOperacion = "El resultado de " + 
-                            Integer.parseInt(request.getParameter("num1"))+ " / " + 
-                            Integer.parseInt(request.getParameter("num2")) + " = " + 
-                            (Integer.parseInt(request.getParameter("num1"))/Integer.parseInt(request.getParameter("num2")));
-                        }else{
-                            mensajeOperacion = "No se puede dividir entre 0";
+                    if (request.getParameter("operacion") != null) {
+                        if (request.getParameter("operacion").equals("Sumar")) {
+                            mensajeOperacion = "El resultado de "
+                                    + Integer.parseInt(request.getParameter("num1")) + " + "
+                                    + Integer.parseInt(request.getParameter("num2")) + " = "
+                                    + (Integer.parseInt(request.getParameter("num1")) + Integer.parseInt(request.getParameter("num2")));
+                        } else if (request.getParameter("operacion").equals("Restar")) {
+                            mensajeOperacion = "El resultado de "
+                                    + Integer.parseInt(request.getParameter("num1")) + " - "
+                                    + Integer.parseInt(request.getParameter("num2")) + " = "
+                                    + (Integer.parseInt(request.getParameter("num1")) - Integer.parseInt(request.getParameter("num2")));
+                        } else if (request.getParameter("operacion").equals("Multiplicar")) {
+                            mensajeOperacion = "El resultado de "
+                                    + Integer.parseInt(request.getParameter("num1")) + " * "
+                                    + Integer.parseInt(request.getParameter("num2")) + " = "
+                                    + (Integer.parseInt(request.getParameter("num1")) * Integer.parseInt(request.getParameter("num2")));
+                        } else if (request.getParameter("operacion").equals("Dividir")) {
+                            if (Integer.parseInt(request.getParameter("num2")) != 0) {
+                                mensajeOperacion = "El resultado de "
+                                        + Integer.parseInt(request.getParameter("num1")) + " / "
+                                        + Integer.parseInt(request.getParameter("num2")) + " = "
+                                        + (Integer.parseInt(request.getParameter("num1")) / Integer.parseInt(request.getParameter("num2")));
+                            } else {
+                                mensajeOperacion = "No se puede dividir entre 0";
+                            }
                         }
                     }
-                    */
+
                 %>
-                <%=mensajeOperacion%>
-                <button type="reset" name="limpiar" value="Limpiar">Limpiar</button>
+                <strong><%=mensajeOperacion%></strong>
+                <br>
+                <br>
+                <button type="reset" name="Limpiar" value="Limpiar">Limpiar</button>
                 <button type="submit" name="botonCookie" value="Menu"><a id="menuCookies" href="<%=request.getContextPath()%>/index.html">Menú</a> </button>
             </fieldset>
         </form>
