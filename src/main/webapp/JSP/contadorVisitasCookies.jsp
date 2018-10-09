@@ -21,12 +21,11 @@
     </head>
     <body>
         <%
-            
+
             int contadorVisitas = 0;
             Cookie miCookie = null;
             Cookie[] cookies = request.getCookies();
 
-            //cookie.getMaxAge();
             //comprobar el array de cookies para ver si está vacio
             if (cookies != null) {
                 for (int i = 0; i < cookies.length; i++) {
@@ -37,14 +36,33 @@
                 }//fin del for
             }//fin comprobación para saber si hay cookies
 
+            String mensajeVisitas = "HAS VISITADO LA PAGINA " ;
             if (miCookie == null) {
                 miCookie = new Cookie("LaCookieCreada", "1");
                 miCookie.setMaxAge(60 * 60);//una hora de caducidad de la cookie
-                response.addCookie(miCookie);
-            }
-            
+                response.addCookie(miCookie); //añadir cookie
+                miCookie.setVersion(0); //establece la versión de protocolo. Si es 0 cumple con Netscape
+                miCookie.setSecure(false); //false: se envia en cualquier protocolo HTTPS o SSL
+                mensajeVisitas += ""+miCookie.getValue();
 
-            String mensajeVisitas = "HAS VISITADO LA PAGINA " + miCookie.getValue() + " VECES";
+            } else {
+                if (request.getParameter("boton") != null) {
+                    if (request.getParameter("boton").equals("Recargar")) {
+                        contadorVisitas = Integer.parseInt(miCookie.getValue());
+                        contadorVisitas++;
+                        miCookie.setValue(contadorVisitas + "");
+                        response.addCookie(miCookie);
+                        mensajeVisitas += ""+miCookie.getValue();
+
+                    } else if (request.getParameter("boton").equals("Eliminar")) {
+                        miCookie.setMaxAge(0);
+                        response.addCookie(miCookie);
+                        mensajeVisitas = "Se ha eliminado la cookie";
+                        contadorVisitas = 0;
+
+                    }
+                }
+            }
 
             /**
              * crear un if para ver si está definida la cookie. Si no existe la
@@ -56,11 +74,25 @@
 
         %>
         <h1>CONTADOR DE VISITAS COOKIES</h1>
-        <form action="../JSP/contadorVisitasCookies.jsp" method="post">
+        <form action="contadorVisitasCookies.jsp" method="post">
 
             <fieldset>
                 <%=mensajeVisitas%>
+                <%
+                    if (miCookie != null) {
+                        if (miCookie.getValue().equals("1")) {
+                                %> VEZ<%
+                        } else {
+                                %> VECES<%
+                          }
+                      }
+                %>
                 <br>
+                <br>
+                <br>
+                Nombre: <%=miCookie.getName()%><br>
+                Segura: <%=miCookie.getSecure()%><br>
+                Versión: <%=miCookie.getVersion()%>
                 <br>
 
                 <button type="submit" name="boton" value="Recargar"><a id="menuCookies" onclick="myFunction()">Recargar</a> </button>
