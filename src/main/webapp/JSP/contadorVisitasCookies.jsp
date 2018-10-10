@@ -64,13 +64,6 @@
                 }
             }
 
-            /**
-             * crear un if para ver si está definida la cookie. Si no existe la
-             * cookie, sería la primera visita, dar al valor de 1, crear la
-             * cookie (dar el valor) Si la cookie existe debe mostrar el número
-             * de visitas, incrementar en 1 el contador,
-             *
-             */
 
         %>
         <h1>CONTADOR DE VISITAS COOKIES</h1>
