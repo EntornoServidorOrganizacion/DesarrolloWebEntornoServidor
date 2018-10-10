@@ -1,24 +1,21 @@
 # DesarrolloWebEntornoServidor
 Practicas DWES
 
+## Control de cookies
+Para esta aplicación, según lo comentado en clase, deberemos crear un formulario o menú donde deberemos introducir el nombre y valor de una cookie y que esta se cree, la podamos visualizar directamente en el formulario del archivo jsp, la podamos modificar y la podamos eliminar. Todas estas opciones deben estar disponibles en botones. También deberá haber un botón para volver al menú inicial (index.html). El nombre de la cookie será obligatorio ponerlo (required). 
+Para comprobar que las cookies se crean y se modifican, en Google Chrome, iremos a: Configuración/Configuración avanzada/Configuración del contenido/Cookies/Ver todas las cookies y todos los datos del sitio web. Ahí aparecerá localhost que nada más ejecutar el proyecto crea una cookie por defecto llamada "JSESSIONID" más las cookies que vayamos creando en la aplicación.
+La apliación se realiza en dos ficheros jsp separados. El primero contiene el formulario para crear, modificar, visualizar y eliminar las cookies (sólo se pueden moficar, visualizar y eliminar, las cookies que nosotros hemos creado en dicha aplicación). Este archivo llamado "menuCookie.jsp" llamará al segundo fichero jsp "cookies.jsp". En "cookies.jsp" es donde haremos la programación para que los botones funcionen:
 
-No he he añadido el codigo al fichero web.xml porque me daba el siguiente error al ejecutar:
-FALLO - Apliación desplegada en la ruta de contexto [/PracticasAula], pero el contexto no pudo arrancar
-Pero se añade de la siguiente manera:
-    <error-page>
-        <error-code>404</error-code>
-        <location>HTML/error404.html</location>
-    </error-page>
-    
-    
-    
-    
-    
-    
-    Tuve que crear otra rama llamada Version2 pero dejó de funcionar correctamente con NetBeans donde iba subiendo las practicas. He borrado todas las ramas y he creado esta nueva llamada Masterv2
-    
-    
-    
-    
-    
-En la caluladora básica he tenido que comentar el código porque constantemente sale el error Estado HTTP 500 – Internal Server Error. A parte sale constantemente en NetBeans warnigs cada vez que intento escribir algo, por lo que es muy difícil programar. 
+   1.- Crear las variables necesarias.
+   2.- Comprobar el array de Cookies[] para ver si no está vacio y recorrerlo en caso de que no sea null.
+   3.- En la opción de crear, crearemos la cookie, asignadole un nombre, un valor, el tiempo de caducidad y cambiando el           mensaje que se va a mostrar. En caso de que ya esté creada, el mensaje deberá indicarlo.
+   4.- En la opción de visualizar, comprobaremos que la cookie no sea null y mostraremos el mensaje deseado (en este caso el nombre y el valor). En caso de que la cookie sea null, el mensaje nos dirá que no existe la cookie.
+   5.- En la opción de modificar, comprobaremos que la cookie no sea null, cambiaremos el valor de la cookie y mostraremos el mensaje deseado. En caso de que la cookie sea null, el mensaje nos dirá que no existe la cookie.
+   6.- En la opción de eliminar, comprobaremos que la cookie no sea null, cambiaremos el tiempo de caducidad a 0 (así es como se elimina) y mostraremos el mensaje deseado. En caso de que la cookie sea null, el mensaje nos dirá que no existe la cookie.
+   7.- Por último con el método sendRedirect, enviaremos el valor que tenga la variable en la que hemos metido el mensaje que queremos mostrar en el formulario.
+
+## Caluladora básica
+Lo que se quiere hacer en esta aplicación es introducir dos número en dos inputs diferentes y que con las operaciones básicas de sumar, restar, multiplicar y dividir, se haga la operación. Las operaciones (inputs) deberán ser type = "radio" con una de ellas ya seleccionada (checked). Debe haber dos botones, uno para resetear los inputs y otro para volver al menú. El resultado se debe mostrar en el mismo formulario. Sólo se creará un fichero jsp donde estará todo el código. Lo que he hecho es hacer un if else, preguntado por el nombre de cada input de las operaciones si es igual al que he seleccionado, en caso de que sea igual realizará la operación correspondiente. Como los inputs de entrada de datos los he puesto type = "text" debo de hacer un parseInt en cada uno de ellos para transformar el número con formato texto, a un numero con el que poder operar con valor numérico.
+
+## Contador Visitas con cookies
+Simplemente, como se ha explicado en clase, realizaremos esta aplicación en un fichero jsp, donde irá mostrando el número de veces que accedemos o visitamos esa web. Cuando entremos por primera vez (en este caso, la cookie es igual a null), se deberá crear automáticamente la cookie y nos dirá que hemos visitado la web una vez, también se mostrará la versión y el protocolo de seguridad (segura), en las siguientes visitas, la información de la cookie no se mostrará. Hay tres botones, uno para recargar la página, otro para eliminar la cookie y otro para ir al menú. Para recargar la página he usado una función de javaScrip que lo que hace es recargar la página cada vez que pulso en el botón de recargar. También al recargar la página, se deberá incrementar el valor de la cookie en uno, ya que es lo que nos dirá las visitas que llevemos realizadas. Al ser de tipo String el valor de la cookie he convertido ese valor en tipo int (Integer.parseInt) para poder operar y sumar uno cada vez que regarguemos. La opción de eliminar, elimina la cookie, con lo cual hay que asignarle un tiempo de caducidad de 0.
