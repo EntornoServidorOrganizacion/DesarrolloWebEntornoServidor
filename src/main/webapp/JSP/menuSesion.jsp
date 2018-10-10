@@ -38,7 +38,6 @@
                     mensaje = "Se ha eliminado la sesión " + nombre + " con valor " + session.getAttribute(nombre);
                 }
             }
-
         %>
         <div>
             <h1>CONTROL DE SESION</h1>

@@ -63,7 +63,7 @@
                     }
                 }
             }
-            //session.invalidate(); //comprobar qué hace
+            
             
         %>
         <h1>CONTADOR DE VISITAS COOKIES</h1>
