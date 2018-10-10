@@ -63,8 +63,8 @@
                     }
                 }
             }
-
-
+            //session.invalidate(); //comprobar qué hace
+            
         %>
         <h1>CONTADOR DE VISITAS COOKIES</h1>
         <form action="contadorVisitasCookies.jsp" method="post">
