@@ -26,5 +26,7 @@ Lo que debe hacer esta apliación es poder crear, visualizar, modificar, o elimi
 
 ## Control de sesiones
 En esta aplicación se deben crear 4 jsp, uno para introducir los datos del usuario, otro para comprobarlos, otro para ejecutar la acción de cerrar sesión y otro con el menú propio del usuario. El usuario y la contraseña vienen predefinidos en el programa, siendo el usuario: paco; y la contraseña: 1234. Si se introduce un usuario erróneo o contraseña no válida se debe indicar con un mensaje de error. En el menú del usuario debe salir la fecha (miercoles, 10 de octubre de 2018, 16:13:51) de la última vez que se entró. En el login principal debe haber un checkbox que al pulsarlo recuerde al usuario. Tanto la fecha como recordar el nombre del usuario se deben hacer con cookies.
-*Commit 14/10/2018
+*Commit 14/10/2018 (medio dia)
 Se inicia con los parámetros establecidos correctamente pero no sale el mensaje de error si no introducimos los que son. Trabajando sobre la fecha que se muestre la última vez que se entró. Fallo en el checkbox, no consigo recordar al usuario.
+*Commit 14/10/2018 a las 23:15
+El mensaje de error sale al introducir los valores incorrectos, pero no desparece hasta cerrar la apliación. Siguo sin poder recordar el usuario con checkbox.
