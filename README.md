@@ -30,3 +30,6 @@ En esta aplicación se deben crear 4 jsp, uno para introducir los datos del usua
 Se inicia con los parámetros establecidos correctamente pero no sale el mensaje de error si no introducimos los que son. Trabajando sobre la fecha que se muestre la última vez que se entró. Fallo en el checkbox, no consigo recordar al usuario.
 *Commit 14/10/2018 a las 23:15
 El mensaje de error sale al introducir los valores incorrectos, pero no desparece hasta cerrar la apliación. Siguo sin poder recordar el usuario con checkbox.
+*Commit 14/10/2018 a las 23:35
+He comentado el codigo de las cookies en el archivo login.jsp porque daba error al ejecutarlo.
+
