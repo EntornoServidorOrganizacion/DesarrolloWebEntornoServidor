@@ -35,10 +35,13 @@
                     break;
                 }
             }
-            Cookie miCookieUser = new Cookie("usuario", "usuario");
+            
             if (request.getParameter("recordar") != null) {
-                response.addCookie(miCookieUser);
+                Cookie cookie = new Cookie("usuario", usuario);
+                cookie.setMaxAge(60*60*24);
+                response.addCookie(cookie);
             }
+
 
 
         %>
@@ -50,7 +53,7 @@
 
                 Usuario: <input type="text" name="usuario"><br>
                 Contraseña: <input type="password" name="contrasenia"><br>
-                Recordar usuario<input type="checkbox" id="recordar" name="recordar" value="recordar"><br>
+                Recordar usuario<input type="checkbox" id="recordar" name="recordar" value="<%=usuario%>"><br>
 
                 <button type="submit" name="botonCookie" value="Entrar">Entrar</button>
                 <button type="submit" name="botonCookie" value="Menu"><a id="menuCookies" href="<%=request.getContextPath()%>/index.html">Menú</a> </button>
