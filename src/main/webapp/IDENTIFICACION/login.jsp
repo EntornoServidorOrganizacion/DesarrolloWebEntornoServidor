@@ -27,7 +27,7 @@
 
             }
 
-            Cookie[] cookies = request.getCookies();
+            /*Cookie[] cookies = request.getCookies();
             String usuario = new String();
             for (int i = 0; i < cookies.length; i++) {
                 if (cookies[i].getName().equals("usuario")) {
@@ -40,7 +40,7 @@
                 Cookie cookie = new Cookie("usuario", usuario);
                 cookie.setMaxAge(60*60*24);
                 response.addCookie(cookie);
-            }
+            }*/
 
 
 
@@ -53,7 +53,7 @@
 
                 Usuario: <input type="text" name="usuario"><br>
                 Contraseña: <input type="password" name="contrasenia"><br>
-                Recordar usuario<input type="checkbox" id="recordar" name="recordar" value="<%=usuario%>"><br>
+                Recordar usuario<input type="checkbox" id="recordar" name="recordar" value=""><br>
 
                 <button type="submit" name="botonCookie" value="Entrar">Entrar</button>
                 <button type="submit" name="botonCookie" value="Menu"><a id="menuCookies" href="<%=request.getContextPath()%>/index.html">Menú</a> </button>
