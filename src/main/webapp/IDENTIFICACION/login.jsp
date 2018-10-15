@@ -50,7 +50,7 @@
             <fieldset>
 
                 <legend>Indentifícate</legend>
-
+<%-- NO RECUERDAS EL USUARIO --%>
                 Usuario: <input type="text" name="usuario"><br>
                 Contraseña: <input type="password" name="contrasenia"><br>
                 Recordar usuario<input type="checkbox" id="recordar" name="recordar" value=""><br>

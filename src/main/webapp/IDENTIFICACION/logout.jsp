@@ -15,7 +15,7 @@
     HttpSession sesion = request.getSession();
     sesion.invalidate(); //esto cierra la sesión
     response.sendRedirect("login.jsp"); //no redirige al login principal
-
+// TODO LO QUE ESTÁ DEBAJO DE ESTA SENTENCIA NO SE EJECUTA YA QUE SE HA DELEGADO EL CONTROL A login.jsp
     //HORA
     Calendar fechaActual = Calendar.getInstance();
     int hora = fechaActual.get(Calendar.HOUR_OF_DAY);

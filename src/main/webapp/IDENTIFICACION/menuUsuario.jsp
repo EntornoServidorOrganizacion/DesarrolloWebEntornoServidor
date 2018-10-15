@@ -11,7 +11,7 @@
     String usuario = (String) sesion.getAttribute("usuario");
 
 %>
-
+<%-- NO CONTROLAS EL ÚLTIMO ACCESO --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,6 +20,7 @@
         <link rel="stylesheet" type="text/css" href="../CSS/normalizer.css">
         <link rel="stylesheet" type="text/css" href="../CSS/estilos.css">
         <title>LOGIN</title>
+        <%-- LOS ESTILOS EN UN FICHERO EXTERNO --%>
         <style>
             body{
 
